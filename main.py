@@ -1,11 +1,4 @@
-from flask import Flask
-from app.routes import app
-
-app = Flask(__name__)
-
-@app.route('/')
-def home():
-    return "Welcome to Task Manager API!"
+from routes import app  # Import the Flask app from routes.py
 
 if __name__ == '__main__':
     app.run(debug=True)

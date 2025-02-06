@@ -1,14 +1,12 @@
-from flask import Flask, jsonify, request
-from app.database import add_task, get_tasks
+from flask import Flask, jsonify
 
-app = Flask(__name__)
+app = Flask(__name__)  # Create the Flask app
+
+tasks = [
+    {"id": 1, "title": "Learn Flask", "done": False},
+    {"id": 2, "title": "Use Git Properly", "done": False}
+]
 
 @app.route('/tasks', methods=['GET'])
-def fetch_tasks():
-    return jsonify(get_tasks())
-
-@app.route('/tasks', methods=['POST'])
-def create_task():
-    data = request.get_json()
-    new_task = add_task(data)
-    return jsonify(new_task), 201
+def get_tasks():
+    return jsonify(tasks)
